@@ -1,0 +1,3 @@
+class GrantlandBot < Robot
+
+end

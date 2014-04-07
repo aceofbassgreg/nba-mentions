@@ -1,0 +1,3 @@
+class CbsSportsBot < Robot
+
+end

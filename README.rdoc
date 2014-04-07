@@ -1,0 +1,10 @@
+
+***Token-based authentication
+***Versioning
+
+NEXT STEPS: 
+
+* Fake data
+* front end that consumes data
+* scraping real data
+

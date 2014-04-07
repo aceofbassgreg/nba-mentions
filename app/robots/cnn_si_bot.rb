@@ -1,0 +1,3 @@
+class CnnSiBot < Robot
+
+end
