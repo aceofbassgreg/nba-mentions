@@ -1,7 +1,10 @@
 class EspnBot < Robot
 
+  include MentionsParser
+
   def self.start
-    EspnBot.new(mechanize_agent)
+    bot = EspnBot.new(mechanize_agent)
+    bot
   end
 
   def scrape_teams_for_db
@@ -16,19 +19,15 @@ class EspnBot < Robot
       page_data.each do |arr|
         articles << articles_hash(arr[0],"espn",arr[1])
       end
+      #Next line creates articles in DB
       articles.each {|a| create_article_record(a)}
+      # hrefs.each do {|href|}
+      #   MentionsParser.store_mentions
+      # end
       # Need to also create mentions...how to do this? Seems like each article added
       # can be a mention for the team that was searched, but an additional layer of
       # parsing is necessary for each article added to the db.
     end
-  end
-
-  def create_article_record(hash)
-    Article.create(
-                    url: hash[:url], 
-                    source: hash[:source], 
-                    publication_date: hash[:publication_date]
-                  )
   end
 
   def all_link_titles(page)
